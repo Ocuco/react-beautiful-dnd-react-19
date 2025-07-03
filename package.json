@@ -1,5 +1,5 @@
 {
-  "name": "@ocuco/react-beautiful-dnd-react-19",
+  "name": "react-beautiful-dnd-react-19",
   "version": "13.1.1-react19.0",
   "description": "Beautiful and accessible drag and drop for lists with React (React 19 compatible fork)",
   "author": "Ocuco <contact@ocuco.com>",
@@ -28,6 +28,7 @@
   "homepage": "https://github.com/Ocuco/react-beautiful-dnd-react-19#readme",
   "main": "dist/react-beautiful-dnd.cjs.js",
   "module": "dist/react-beautiful-dnd.esm.js",
+  "types": "dist/index.d.ts",
   "sideEffects": false,
   "files": [
     "/dist",
@@ -51,10 +52,11 @@
     "typecheck": "flow check --max-warnings=0",
     "bundle-size:check": "cross-env SNAPSHOT=match yarn bundle-size:update",
     "bundle-size:update": "yarn build:clean && yarn build:dist && yarn build:clean",
-    "build": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" yarn build:clean && yarn build:dist && yarn build:flow",
+    "build": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" yarn build:clean && yarn build:dist && yarn build:flow && yarn build:types",
     "build:clean": "rimraf dist",
     "build:dist": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" rollup -c",
     "build:flow": "echo \"// @flow\n\nexport * from '../src';\" > dist/react-beautiful-dnd.cjs.js.flow",
+    "build:types": "cp src/index.d.ts dist/index.d.ts",
     "storybook": "start-storybook -p 9002",
     "build-storybook": "build-storybook -c .storybook -o site",
     "prepublishOnly": "yarn build"
