@@ -1,8 +1,8 @@
 {
-  "name": "react-beautiful-dnd",
-  "version": "13.1.1",
-  "description": "Beautiful and accessible drag and drop for lists with React",
-  "author": "Alex Reardon <areardon@atlassian.com>",
+  "name": "@ocuco/react-beautiful-dnd-react-19",
+  "version": "13.1.1-react19.0",
+  "description": "Beautiful and accessible drag and drop for lists with React (React 19 compatible fork)",
+  "author": "Ocuco <contact@ocuco.com>",
   "keywords": [
     "drag and drop",
     "dnd",
@@ -11,17 +11,21 @@
     "reorderable",
     "react",
     "react.js",
+    "react-19",
+    "react19",
     "natural",
     "beautiful",
-    "accessible"
+    "accessible",
+    "fork"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/atlassian/react-beautiful-dnd.git"
+    "url": "https://github.com/Ocuco/react-beautiful-dnd-react-19.git"
   },
   "bugs": {
-    "url": "https://github.com/atlassian/react-beautiful-dnd/issues"
+    "url": "https://github.com/Ocuco/react-beautiful-dnd-react-19/issues"
   },
+  "homepage": "https://github.com/Ocuco/react-beautiful-dnd-react-19#readme",
   "main": "dist/react-beautiful-dnd.cjs.js",
   "module": "dist/react-beautiful-dnd.esm.js",
   "sideEffects": false,
@@ -47,9 +51,9 @@
     "typecheck": "flow check --max-warnings=0",
     "bundle-size:check": "cross-env SNAPSHOT=match yarn bundle-size:update",
     "bundle-size:update": "yarn build:clean && yarn build:dist && yarn build:clean",
-    "build": "yarn build:clean && yarn build:dist && yarn build:flow",
+    "build": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" yarn build:clean && yarn build:dist && yarn build:flow",
     "build:clean": "rimraf dist",
-    "build:dist": "rollup -c",
+    "build:dist": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" rollup -c",
     "build:flow": "echo \"// @flow\n\nexport * from '../src';\" > dist/react-beautiful-dnd.cjs.js.flow",
     "storybook": "start-storybook -p 9002",
     "build-storybook": "build-storybook -c .storybook -o site",
@@ -88,6 +92,8 @@
     "babel-loader": "8.1.0",
     "babel-plugin-dev-expression": "0.2.2",
     "babel-plugin-emotion": "10.0.33",
+    "browserslist": "^4.25.1",
+    "caniuse-lite": "^1.0.30001726",
     "cross-env": "7.0.3",
     "cypress": "4.4.0",
     "emotion-theming": "10.0.27",
@@ -149,7 +155,19 @@
     "react": "^16.8.5 || ^17.0.0 || ^18.0.0 || ^19.0.0",
     "react-dom": "^16.8.5 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    },
+    "react-dom": {
+      "optional": false
+    }
+  },
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "jest-junit": {
     "output": "test-reports/junit/js-test-results.xml"
   }
